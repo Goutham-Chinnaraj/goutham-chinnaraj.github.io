@@ -1,89 +1,164 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const skills = [
-    { name: 'Java & Spring Boot', level: 90 },
-    { name: 'JavaScript & React', level: 85 },
-    { name: 'AWS & Cloud', level: 80 },
-    { name: 'Salesforce', level: 75 },
-  ];
+document.addEventListener('DOMContentLoaded', function () {
 
-  const projects = [
-    {
-      title: 'Project One',
-      desc: 'A data-driven dashboard built with React & AWS Lambda.',
-      github: 'https://github.com/your-username/project-one',
-      demo: 'https://demo-one.netlify.app'
-    },
-    {
-      title: 'Project Two',
-      desc: 'Microservices app using Spring Boot & Docker.',
-      github: 'https://github.com/your-username/project-two',
-      demo: 'https://demo-two.vercel.app'
-    },
-    {
-      title: 'Project Three',
-      desc: 'Salesforce integration for automated lead routing.',
-      github: 'https://github.com/your-username/project-three',
-      demo: 'https://project-three.pages.dev'
-    }
-  ];
+    // --- 1. INJECT DYNAMIC STYLES ---
+    // This injects the necessary CSS for the new features directly into the page.
+    // This makes the entire solution self-contained within this single JS file.
+    const style = document.createElement('style');
+    style.innerHTML = `
+        /* Hide the default browser cursor */
+        body {
+            cursor: none;
+        }
 
-  // Render skills
-  const skGrid = document.getElementById('skills-grid');
-  skills.forEach(s => {
-    const el = document.createElement('div');
-    el.className = 'skill fade-in';
-    el.innerHTML = `
-      <h3>${s.name}</h3>
-      <div class="bar"><div class="fill" style="--width:${s.level}%"></div></div>
+        /* Custom Cursor Styles */
+        .cursor-dot,
+        .cursor-outline {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        /* Show custom cursor when mouse is over the body */
+        body:hover .cursor-dot,
+        body:hover .cursor-outline {
+            opacity: 1;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--teal);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--teal);
+            transition: transform 0.3s ease-out, border-color 0.3s ease-out, width 0.3s ease-out, height 0.3s ease-out;
+        }
     `;
-    skGrid.appendChild(el);
-    // animate width after slight delay
-    setTimeout(() => {
-      el.querySelector('.fill').style.width = s.level + '%';
-    }, 200);
-  });
+    document.head.appendChild(style);
 
-  // Render projects
-  const pjGrid = document.getElementById('projects-grid');
-  projects.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'project-card fade-in';
-    card.innerHTML = `
-      <h3>${p.title}</h3>
-      <p>${p.desc}</p>
-      <p><a href="${p.github}" target="_blank">GitHub</a> | <a href="${p.demo}" target="_blank">Demo</a></p>
-    `;
-    pjGrid.appendChild(card);
-  });
 
-  // Mobile nav toggle
-  document.querySelector('.hamburger').onclick = () =>
-    document.querySelector('.nav-links').classList.toggle('open');
+    // --- 2. DYNAMIC CURSOR ---
+    // Create the cursor elements and add them to the page
+    const cursorDot = document.createElement('div');
+    cursorDot.className = 'cursor-dot';
+    document.body.appendChild(cursorDot);
 
-  // Scroll-reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('reveal');
-        observer.unobserve(e.target);
-      }
+    const cursorOutline = document.createElement('div');
+    cursorOutline.className = 'cursor-outline';
+    document.body.appendChild(cursorOutline);
+
+    // Listen for mouse movement to position the custom cursor
+    window.addEventListener('mousemove', function (e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // Animate the outline for a smooth "follow" effect
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: 'forwards' });
     });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Active nav link on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 80;
-      if (pageYOffset >= top) current = sec.getAttribute('id');
+    // Add hover effects for all interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .hamburger');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseover', () => {
+            // Enlarge the cursor outline on hover
+            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            cursorOutline.style.borderColor = 'var(--sky)';
+        });
+        el.addEventListener('mouseleave', () => {
+            // Return to default state
+            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursorOutline.style.borderColor = 'var(--teal)';
+        });
     });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+
+
+    // --- 3. MOBILE NAVIGATION ---
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links li a');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
     });
-  });
+
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    });
+
+
+    // --- 4. ACTIVE LINK HIGHLIGHTING ON SCROLL ---
+    const sections = document.querySelectorAll('main section');
+    const navLi = document.querySelectorAll('.nav-links li a');
+    window.addEventListener('scroll', () => {
+        let current = 'home';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 150) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLi.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === '#' + current) {
+                a.classList.add('active');
+            }
+        });
+    });
+
+
+    // --- 5. ADVANCED SCROLL-TRIGGERED ANIMATIONS ---
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+
+                // Animate skill bars with a staggered delay when they become visible
+                if (entry.target.id === 'about') {
+                    const skillFills = entry.target.querySelectorAll('.skill-fill');
+                    skillFills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            const level = fill.getAttribute('data-level');
+                            fill.style.width = level + '%';
+                        }, index * 150); // Each bar animates 150ms after the previous one
+                    });
+                }
+                // Stop observing the element once it has been revealed to save resources
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px" // Start animation slightly before it's fully in view
+    });
+
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
+    });
 });
+
 
 
