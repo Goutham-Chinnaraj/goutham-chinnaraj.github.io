@@ -1,18 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Goutham Chinnaraj</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goutham Chinnaraj | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet"/>
 </head>
 <body>
   <header>
-    <h1>Goutham Chinnaraj</h1>
-    <p><a href="https://www.linkedin.com/in/goutham-chinnaraj-50b025191/">LinkedIn</a></p>
+    <nav>
+      <a href="#home" class="logo">Goutham Chinnaraj</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
-  <section id="projects">
-    <!-- Your project cards here -->
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <img src="headshot.jpg" alt="Goutham Chinnaraj" class="avatar"/>
+      <h1>Hello, I’m Goutham</h1>
+      <p>Full‐stack Developer | AWS & Salesforce Certified | Passionate about building data‐driven web apps.</p>
+      <p><a href="https://www.linkedin.com/in/goutham-chinnaraj-50b025191/" target="_blank">Connect on LinkedIn →</a></p>
+    </div>
   </section>
+
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>
+      I’m a software engineer with 3+ years of experience in Java, Spring Boot, React and cloud platforms (AWS, Salesforce). I build scalable, secure applications and enjoy working in Agile teams to deliver impactful solutions.
+    </p>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <!-- Repeat this .project‐card block for each project -->
+      <div class="project-card">
+        <h3>Project One</h3>
+        <p>Brief description of project one—what problem it solves and the tech stack.</p>
+        <p>
+          <a href="https://github.com/your-username/project-one" target="_blank">GitHub</a> |
+          <a href="https://live-demo-one.netlify.app" target="_blank">Live Demo</a>
+        </p>
+      </div>
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>Brief description of project two—key features and technologies used.</p>
+        <p>
+          <a href="https://github.com/your-username/project-two" target="_blank">GitHub</a> |
+          <a href="https://live-demo-two.vercel.app" target="_blank">Live Demo</a>
+        </p>
+      </div>
+      <div class="project-card">
+        <h3>Project Three</h3>
+        <p>Brief description of project three—highlights of functionality.</p>
+        <p>
+          <a href="https://github.com/your-username/project-three" target="_blank">GitHub</a> |
+          <a href="https://project-three.pages.dev" target="_blank">Live Demo</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Feel free to reach out via <a href="mailto:youremail@example.com">email</a> or connect on <a href="https://www.linkedin.com/in/goutham-chinnaraj-50b025191/" target="_blank">LinkedIn</a>.</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Goutham Chinnaraj</p>
+  </footer>
 </body>
 </html>
