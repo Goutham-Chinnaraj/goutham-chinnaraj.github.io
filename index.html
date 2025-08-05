@@ -68,95 +68,78 @@
     }
     .navbar.scrolled { box-shadow: var(--shadow-lg); }
     .nav-container { display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) var(--spacing-lg); }
-    .nav-logo a {
-      font-size: 1.5rem; font-weight: 700;
-      background: var(--gradient-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .nav-logo a { font-size: 1.5rem; font-weight: 700; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .nav-menu { display: flex; gap: var(--spacing-2xl); }
-    .nav-link {
-      color: var(--text-main); text-decoration: none; font-weight: 500; position: relative;
-      transition: all 0.3s ease;
-    }
+    .nav-link { color: var(--text-main); text-decoration: none; font-weight: 500; position: relative; transition: all 0.3s ease; }
     .nav-link:hover { color: var(--mint-teal); }
     .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--mint-teal); transition: width 0.3s ease; }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
     .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
     .hamburger span { width: 25px; height: 3px; background: var(--text-main); transition: all 0.3s ease; }
 
-    /* Hero Section */
-    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-    .hero-bg { position: absolute; inset: 0; background: var(--gradient-primary); opacity: 0.9; }
-    .hero-content { text-align: center; z-index: 2; animation: fadeInUp 1s ease-out; }
-    .hero-title {
-      font-size: 3rem; font-weight: 700;
-      background: var(--gradient-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    /* Hero Section - New Split Style */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--dark-gray);
     }
-    .hero-subtitle { font-size: 1.25rem; color: var(--mint-teal); margin: var(--spacing-md) 0; font-weight: 500; }
-    .hero-description { max-width: 600px; margin: 0 auto var(--spacing-2xl); color: rgba(255,255,255,0.8); }
-    .hero-buttons { display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: var(--spacing-md) var(--spacing-xl); border-radius: var(--border-radius-lg); font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-family: inherit; transition: all 0.3s ease; }
-    .btn-primary { background: var(--mint-teal); color: #fff; box-shadow: var(--shadow-md); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-    .btn-secondary { background: transparent; color: var(--mint-teal); border: 2px solid var(--mint-teal); }
-    .btn-secondary:hover { background: var(--mint-teal); color: #fff; transform: translateY(-2px); }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--spacing-3xl);
+      padding: var(--spacing-2xl) 0;
+    }
+    .hero-image {
+      display: flex;
+      justify-content: center;
+    }
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      transform: rotate(-3deg);
+    }
+    .hero-content {
+      color: #fff;
+      animation: fadeInUp 1s ease-out;
+    }
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--mint-teal);
+      margin-bottom: var(--spacing-md);
+    }
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: var(--spacing-md);
+    }
+    .hero-description {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.5;
+      margin-bottom: var(--spacing-2xl);
+    }
+    .hero-buttons .btn {
+      margin-right: var(--spacing-sm);
+      padding: var(--spacing-md) var(--spacing-2xl);
+    }
+    .hero-buttons .btn-secondary {
+      border-color: #fff;
+      color: #fff;
+    }
 
-    /* Sections */
-    section { padding: var(--spacing-3xl) 0; position: relative; }
-    .section-header { text-align: center; margin-bottom: var(--spacing-3xl); }
-    .section-title { font-size: 2.25rem; font-weight: 700; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .section-line { width: 80px; height: 4px; margin: var(--spacing-md) auto; background: var(--mint-teal); border-radius: 2px; }
-
-    /* About */
-    .about { background: rgba(62,224,193,0.02); }
-    .about-new-layout { display: flex; align-items: center; gap: var(--spacing-3xl); flex-wrap: wrap; }
-    .about-image img { width: 280px; height: 280px; object-fit: cover; border-radius: 50%; border: 4px solid var(--mint-teal); box-shadow: var(--shadow-md); }
-    .about-text p { color: #fff; margin-bottom: var(--spacing-md); }
-    .about-bullets { list-style: none; margin-top: var(--spacing-md); }
-    .about-bullets li { margin-bottom: var(--spacing-sm); color: var(--text-main); font-weight: 500; }
-
-    /* Skills */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: var(--spacing-lg); }
-    .skill-card { background: var(--medium-gray); border-radius: var(--border-radius-sm); padding: var(--spacing-lg); text-align: center; }
-
-    /* Projects */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: var(--spacing-2xl); }
-    .project-card { background: var(--medium-gray); border: 1px solid var(--light-gray); border-radius: var(--border-radius-lg); padding: var(--spacing-xl); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-    .project-card h3 { color: var(--mint-teal); margin-bottom: var(--spacing-sm); }
-    .project-card p { color: var(--text-secondary); margin-bottom: var(--spacing-md); }
-    .project-tags { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); }
-    .project-tags .tag { background: var(--navy-blue); color: #fff; padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--border-radius-sm); font-size: var(--font-size-xs); font-weight: 600; }
-
-    /* Experience */
-    .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--mint-teal); transform: translateX(-50%); }
-    .timeline-item { position: relative; margin-bottom: var(--spacing-3xl); display: flex; align-items: center; }
-    .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
-    .timeline-date { background: var(--mint-teal); color: #fff; padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--border-radius-sm); font-weight: 600; font-size: var(--font-size-sm); min-width: 120px; text-align: center; position: relative; z-index: 2; }
-    .timeline-content { flex: 1; background: rgba(62,224,193,0.05); border: 1px solid rgba(62,224,193,0.1); border-radius: var(--border-radius-lg); padding: var(--spacing-lg); transition: all 0.3s ease; }
-    .timeline-content h3 { font-size: var(--font-size-xl); margin-bottom: var(--spacing-xs); color: var(--mint-teal); }
-    .timeline-content h4 { font-size: var(--font-size-lg); margin-bottom: var(--spacing-md); color: var(--text-main); font-weight: 600; }
-    .timeline-content p { color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--spacing-md); }
-    .timeline-tags { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
-    .tag { background: rgba(62,224,193,0.1); color: var(--mint-teal); padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--border-radius-sm); font-size: var(--font-size-xs); font-weight: 500; border: 1px solid rgba(62,224,193,0.2); }
-
-    /* Contact */
-    .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-3xl); align-items: start; }
-    .contact-item span { color: var(--text-main); margin-left: var(--spacing-md); }
-
-    /* Footer */
-    .footer-links a { color: rgba(255,255,255,0.7); }
-
-    /* Responsive */
-    @media (max-width:768px) {
-      .hamburger { display:flex; }
-      .nav-menu { position: fixed; top:100%; left:0; right:0; background: rgba(10,25,47,0.98); flex-direction:column; padding:var(--spacing-xl); gap:var(--spacing-lg); transform: translateY(-100%); opacity:0; visibility:hidden; transition:all 0.3s ease; }
-      .nav-menu.active { transform: translateY(0); opacity:1; visibility:visible; }
-      .about-new-layout { flex-direction: column; text-align: center; }
+    /* Responsive Adjustment */
+    @media (max-width: 920px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-image img { max-width: 300px; }
+      .hero-title { font-size: 3rem; }
     }
 
     @keyframes fadeInUp { from { opacity:0; transform: translateY(30px);} to { opacity:1; transform: translateY(0);} }
@@ -181,198 +164,23 @@
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
+    <div class="hero-inner container">
+      <div class="hero-image">
+        <img src="assets/your-photo.jpg" alt="Goutham Chinnaraj">
+      </div>
       <div class="hero-content">
         <h1 class="hero-title">Goutham Chinnaraj</h1>
         <p class="hero-subtitle">Innovative Software Engineer</p>
-        <p class="hero-description">
-          Innovative Software Engineer with 3+ years’ expertise in Java, Python, and SQL, specializing in scalable backend development and intelligent data pipelines across Salesforce. Adept at solving complex engineering challenges and leading cross-functional efforts in agile environments.
-        </p>
+        <p class="hero-description">With 3+ years’ expertise in Java, Python, and SQL, I build scalable backends and intelligent data pipelines across AWS and Salesforce, transforming complex requirements into robust solutions.</p>
         <div class="hero-buttons">
           <a href="#about" class="btn btn-primary">Learn More</a>
-          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-          <a href="assets/Goutham_Resume.pdf" download class="btn btn-secondary"><i class="fas fa-file-download"></i>&nbsp;Download Resume</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+          <a href="assets/Goutham_Resume.pdf" download class="btn btn-secondary"><i class="fas fa-file-download"></i>&nbsp;Download CV</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">About Me</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="about-new-layout">
-        <div class="about-image">
-          <img src="assets/your-photo.jpg" alt="Goutham Chinnaraj">
-        </div>
-        <div class="about-text">
-          <p>As a Software Engineer based in Chicago, IL, I design and implement robust backend systems and data solutions. With a Master's in Business Analytics and hands-on experience across multiple internships and software development roles, I translate data into actionable insights and build scalable applications.</p>
-          <ul class="about-bullets">
-            <li>🏆 Best Paper Award: Consumer Behavior in Product Trends and Marketing Campaigns</li>
-            <li>🎖️ SAP Recognition Award for excellence in business-technology integration</li>
-            <li>📈 3+ years’ experience delivering high-impact, customer-centric solutions</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="skills">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Skills</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card">Python, Java, JavaScript</div>
-        <div class="skill-card">Spring Boot, REST APIs, React</div>
-        <div class="skill-card">AWS, Salesforce Certified</div>
-        <div class="skill-card">SQL, Tableau, Power BI</div>
-        <div class="skill-card">Git, GitHub, Jenkins</div>
-        <div class="skill-card">Agile, Scrum, Jira, Confluence</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Projects</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="projects-grid">
-        <div class="project-card">
-          <h3>Obstacle Avoidance Algorithm</h3>
-          <p>YOLOv3 with TensorFlow for real-time obstacle detection in autonomous navigation.</p>
-          <div class="project-tags">
-            <span class="tag">TensorFlow</span>
-            <span class="tag">YOLOv3</span>
-            <span class="tag">Deep Learning</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <h3>Sentiment Analysis of Amazon Reviews</h3>
-          <p>NLP pipeline in Python processing 100K+ reviews, achieving 90% accuracy.</p>
-          <div class="project-tags">
-            <span class="tag">NLP</span>
-            <span class="tag">Python</span>
-            <span class="tag">Linear Regression</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <h3>Deep Surveillance Neural Network</h3>
-          <p>CNN-LSTM model for anomaly detection in surveillance footage with 90% accuracy.</p>
-          <div class="project-tags">
-            <span class="tag">CNN</span>
-            <span class="tag">LSTM</span>
-            <span class="tag">Computer Vision</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <h3>USA Housing Price Forecasting</h3>
-          <p>ML pipeline using regression and visualization to predict housing trends.</p>
-          <div class="project-tags">
-            <span class="tag">Regression</span>
-            <span class="tag">Scikit-Learn</span>
-            <span class="tag">Data Visualization</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <h3>Business Requirement Dashboard</h3>
-          <p>Salesforce dashboard for TCS internal use, integrating Jira APIs for real-time tracking.</p>
-          <div class="project-tags">
-            <span class="tag">Salesforce</span>
-            <span class="tag">Dashboard</span>
-            <span class="tag">Jira API</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="experience">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Experience & Education</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">Nov 2024 - Apr 2025</div>
-          <div class="timeline-content">
-            <h3>Data Analyst Intern</h3>
-            <h4>Tecaholic, Chicago, IL</h4>
-            <p>Analyzed datasets to extract insights, supported business analysis by gathering requirements and documenting processes.</p>
-            <div class="timeline-tags"><span class="tag">Data Analysis</span><span class="tag">Documentation</span></div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Aug 2021 - Sept 2023</div>
-          <div class="timeline-content">
-            <h3>Software Developer</h3>
-            <h4>Tata Consultancy Services, Hyderabad, India</h4>
-            <p>Developed backend services with Python, Java, SQL; built dashboards using Tableau; integrated third-party APIs; led Agile ceremonies and UAT support.</p>
-            <div class="timeline-tags"><span class="tag">Java</span><span class="tag">Salesforce</span><span class="tag">Tableau</span></div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Aug 2020 - Jan 2021</div>
-          <div class="timeline-content">
-            <h3>Research Intern</h3>
-            <h4>GradVantage, Sydney, Australia</h4>
-            <p>Built notification services supporting email, push, and in-app messages with A/B testing and queuing mechanisms.</p>
-            <div class="timeline-tags"><span class="tag">Notification Services</span><span class="tag">A/B Testing</span></div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Feb 2020 - Aug 2020</div>
-          <div class="timeline-content">
-            <h3>Data Research Intern</h3>
-            <h4>Agua Wireless Systems, Bengaluru, India</h4>
-            <p>Developed automated email marketing dashboards to optimize targeting and improve campaign ROI through data analytics.</p>
-            <div class="timeline-tags"><span class="tag">Power BI</span><span class="tag">ROI Optimization</span></div>
-          </div>
-        </div>
-        <div class="timeline-item">...
-          <!-- Education -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-header"><h2 class="section-title">Contact</h2><div class="section-line"></div></div>
-      <div class="contact-content">
-        <div class="contact-text">
-          <p>Email: gouthamchinnaraj@gmail.com<br>Phone: +1 314-309-9200<br>Location: Chicago, IL</p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/goutham-chinnaraj-50b025191/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2025 Goutham Chinnaraj. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JS Scripts (unchanged) -->
+  <!-- ...rest of sections unchanged... -->
 </body>
 </html>
-
