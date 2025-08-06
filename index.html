@@ -8,73 +8,83 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Reset & Base */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top:80px; }
-    body { font-family:'Inter',sans-serif; background:#0A192F; color:#A3A8B8; overflow-x:hidden; }
-    .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { font-family: 'Inter', sans-serif; background: #0A192F; color: #FFFFFF; overflow-x: hidden; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
 
-    /* Nav */
-    .navbar { position:fixed; top:0; width:100%; background:rgba(10,25,47,0.9); backdrop-filter:blur(10px); z-index:1000; padding:0.75rem 1rem; display:flex; justify-content:space-between; align-items:center; }
-    .nav-logo a { font-size:1.5rem; font-weight:700; color:#3EE0C1; text-decoration:none; }
-    .nav-menu { display:flex; gap:1.5rem; }
-    .nav-link { color:#A3A8B8; text-decoration:none; font-weight:500; position:relative; }
-    .nav-link.active, .nav-link:hover { color:#3EE0C1; }
-    .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:#3EE0C1; transition:width .3s; }
-    .nav-link:hover::after, .nav-link.active::after { width:100%; }
+    /* Navigation */
+    .navbar { position: fixed; top: 0; width: 100%; background: rgba(10,25,47,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo a { color: #FFFFFF; font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+    .nav-menu { display: flex; gap: 1.5rem; }
+    .nav-link { color: #A3A8B8; text-decoration: none; font-weight: 500; position: relative; }
+    .nav-link.active, .nav-link:hover { color: #FFFFFF; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #FFFFFF; transition: width 0.3s; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .hamburger span { width: 25px; height: 3px; background: #FFFFFF; transition: 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    @media(max-width:768px) {
+      .hamburger { display: flex; }
+      .nav-menu { position: fixed; top: 60px; left:0; right:0; background: rgba(10,25,47,0.95); flex-direction: column; gap: 1rem; padding: 1rem; transform: translateY(-100%); transition: transform 0.3s; }
+      .nav-menu.active { transform: translateY(0); }
+    }
 
     /* Hero */
-    .hero { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 1rem; }
-    .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at center, rgba(62,224,193,0.1), transparent 70%); }
-    .hero-title { font-size:4rem; color:#3EE0C1; margin-bottom:0.5rem; position:relative; z-index:1; }
-    .hero-subtitle { font-size:1.5rem; color:#fff; margin-bottom:1rem; position:relative; z-index:1; }
-    .hero-description { max-width:600px; margin:0 auto 2rem; line-height:1.6; color:rgba(255,255,255,0.85); position:relative; z-index:1; }
-    .hero-buttons { display:flex; gap:1rem; justify-content:center; margin-bottom:2rem; position:relative; z-index:1; }
-    .btn { padding:0.75rem 2rem; border-radius:0.5rem; font-weight:600; text-decoration:none; transition:all .3s; }
-    .btn-primary { background:#3EE0C1; color:#0A192F; }
-    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(62,224,193,0.4); }
-    .btn-secondary { border:2px solid #3EE0C1; color:#3EE0C1; }
-    .btn-secondary:hover { background:rgba(62,224,193,0.1); transform:translateY(-3px); }
-
-    /* Down Arrow */
-    .scroll-down { font-size:2rem; color:#3EE0C1; animation:fade 2s infinite; cursor:pointer; position:relative; z-index:1; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 0 1rem; }
+    .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .hero-subtitle { font-size: 1.25rem; color: #A3A8B8; margin-bottom: 1rem; }
+    .hero-description { max-width: 700px; line-height: 1.6; color: #CCCCCC; margin-bottom: 2rem; }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem; }
+    .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; border: 2px solid #FFFFFF; transition: 0.3s; }
+    .btn-primary { background: #1E1E2F; color: #FFFFFF; border-color: #FFFFFF; }
+    .btn-primary:hover { background: #FFFFFF; color: #0A192F; }
+    .btn-secondary { background: transparent; color: #FFFFFF; }
+    .btn-secondary:hover { background: #1E1E2F; }
+    .scroll-down { font-size: 2rem; color: #FFFFFF; animation: fade 2s infinite; cursor: pointer; }
     @keyframes fade { 0%,100%{opacity:1;}50%{opacity:0.5;} }
 
     /* Sections */
-    section { padding:4rem 0; }
-    .section-header { text-align:center; margin-bottom:2rem; }
-    .section-title { font-size:2.5rem; color:#fff; margin-bottom:0.5rem; }
-    .section-line { width:80px; height:4px; background:#3EE0C1; margin:0 auto; border-radius:2px; }
+    section { padding: 4rem 0; }
+    .section-header { text-align: center; margin-bottom: 2rem; }
+    .section-title { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .section-line { width: 80px; height: 3px; background: #FFFFFF; margin: 0 auto; border-radius: 2px; }
 
-    /* Skills Grid */
-    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; text-align:center; color:white; }
-    .skill-card { background:#1E1E2F; padding:1rem; border-radius:0.5rem; }
+    /* About */
+    .about-text { max-width: 800px; margin: 0 auto; line-height: 1.6; color: #CCCCCC; }
 
-    /* Projects Grid */
-    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; }
-    .project-card { background:#1E1E2F; padding:1.5rem; border-radius:0.5rem; }
-    .project-card h3 { color:#3EE0C1; margin-bottom:0.5rem; }
-    .project-card p { color:#A3A8B8; margin-bottom:0.75rem; }
-    .project-tags { color:#3EE0C1; font-size:0.9rem; }
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 1rem; }
+    .skill-card { background: #1E1E2F; padding: 1rem; border-radius: 0.5rem; text-align: center; color: #FFFFFF; }
 
-    /* Experience List */
-    .experience-item { margin-bottom:2rem; }
-    .experience-item h3 { color:#3EE0C1; margin-bottom:0.25rem; }
-    .experience-item h4 { font-weight:500; color:#fff; margin-bottom:0.5rem; }
-    .experience-item p { color:#A3A8B8; line-height:1.6; }
+    /* Projects */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem; }
+    .project-card { background: #1E1E2F; padding: 1.5rem; border-radius: 0.5rem; }
+    .project-card h3 { color: #FFFFFF; margin-bottom: 0.75rem; }
+    .project-card p { color: #CCCCCC; margin-bottom: 0.5rem; }
+    .project-tags { color: #FFFFFF; font-size: 0.9rem; }
+
+    /* Experience */
+    .experience-item { margin-bottom: 2rem; }
+    .experience-item h3 { color: #FFFFFF; margin-bottom: 0.25rem; }
+    .experience-item h4 { color: #CCCCCC; margin-bottom: 0.5rem; }
+    .experience-item p { color: #CCCCCC; line-height: 1.6; }
 
     /* Contact */
-    .contact-info p { color:#A3A8B8; text-align:center; margin-bottom:0.5rem; }
-    .social-links { display:flex; justify-content:center; gap:1rem; margin-top:1rem; }
-    .social-link { color:#3EE0C1; font-size:1.5rem; }
+    .contact-info p { color: #CCCCCC; text-align: center; margin-bottom: 0.5rem; }
+    .social-links { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+    .social-link { color: #FFFFFF; font-size: 1.5rem; }
 
-    /* Responsive */
-    @media(max-width:768px){ .hero-title{font-size:3rem;} .hero-subtitle{font-size:1.25rem;} .hero-buttons{flex-direction:column;} }
   </style>
 </head>
 <body>
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <a href="#home" class="nav-logo">Goutham Chinnaraj</a>
-    <div class="nav-menu">
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <div class="nav-menu" id="nav-menu">
       <a href="#home" class="nav-link active">Home</a>
       <a href="#about" class="nav-link">About</a>
       <a href="#skills" class="nav-link">Skills</a>
@@ -84,10 +94,10 @@
     </div>
   </nav>
 
-  <section id="home" class="hero">
+  <section id="home" class="hero container">
     <h1 class="hero-title">Goutham Chinnaraj</h1>
     <p class="hero-subtitle">Innovative Software Engineer</p>
-    <p class="hero-description">With 3+ years’ expertise in Java, Python, and SQL, I build scalable backends and intelligent data pipelines across AWS and Salesforce, transforming complex requirements into robust solutions.</p>
+    <p class="hero-description">With 3+ years’ expertise in Java, Python, and SQL, I build scalable backends and data pipelines across AWS and Salesforce, transforming requirements into solutions.</p>
     <div class="hero-buttons">
       <a href="#about" class="btn btn-primary">Learn More</a>
       <a href="#contact" class="btn btn-secondary">Contact Me</a>
@@ -97,9 +107,117 @@
   </section>
 
   <section id="about">
-      <!-- ... -->
+    <div class="section-header">
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="about-text">As a software engineer, my mission is to build data-driven foundations. For more than three years, I've specialized in data engineering—creating high-performance backends and end-to-end pipelines essential for analytics and AI. My expertise in Java, Python, and SQL is the bedrock of this work. Certified Salesforce AI Associate, Master's in Business Analytics, integrating machine intelligence into enterprise solutions.</p>
   </section>
-  <!-- rest unchanged -->
+
+  <section id="skills">
+    <div class="section-header">
+      <h2 class="section-title">Skills</h2>
+      <div class="section-check">
+        <div class="section-line"></div>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">Data Engineering</div>
+      <div class="skill-card">AI</div>
+      <div class="skill-card">Python</div>
+      <div class="skill-card">Java</div>
+      <div class="skill-card">Machine Learning</div>
+      <div class="skill-card">SQL</div>
+      <div class="skill-card">Data & Business Analysis</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-header">
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid container">
+      <div class="project-card">
+        <h3>Obstacle Avoidance Algorithm</h3>
+        <p>Applied YOLOv3 with TensorFlow to detect real-time obstacles; focused on signal extraction & response modeling.</p>
+        <p class="project-tags">TensorFlow • YOLOv3</p>
+      </div>
+      <div class="project-card">
+        <h3>Sentiment Analysis of Amazon Reviews</h3>
+        <p>Automated sentiment detection for 100K+ reviews with Python NLP pipeline & linear regression; achieved 90% accuracy.</p>
+        <p class="project-tags">Python • NLP • Regression</p>
+      </div>
+      <div class="project-card">
+        <h3>Deep Surveillance Neural Network</h3>
+        <p>Built CNN-LSTM model for anomaly detection in surveillance footage; simulated real-world threat scenarios at 90% accuracy.</p>
+        <p class="project-tags">CNN • LSTM</p>
+      </div>
+      <div class="project-card">
+        <h3>USA Housing Price Forecasting</h3>
+        <p>Developed full ML pipeline forecasting housing trends with regression & visualization.</p>
+        <p class="project-tags">Regression • Visualization</p>
+      </div>
+      <div class="project-card">
+        <h3>Salesforce Dashboard (TCS)</h3>
+        <p>Designed internal requirement-tracking dashboards using Salesforce & Jira APIs.</p>
+        <p class="project-tags">Salesforce • Jira API</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-header">
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="container">
+      <div class="experience-item">
+        <h3>Software Developer</h3>
+        <h4>Tata Consultancy Services | 2021–2023</h4>
+        <p>Built backend services in Java/Python, integrated APIs, led Agile, and supported UAT.</p>
+      </div>
+      <div class="experience-item">
+        <h3>Data Analyst Intern</h3>
+        <h4>Tecaholic, Chicago | 2024–2025</h4>
+        <p>Analyzed datasets, gathered requirements, and documented BI processes.</p>
+      </div>
+      <div class="experience-item">
+        <h3>Research Intern</h3>
+        <h4>GradVantage, Sydney | 2020</h4>
+        <p>Built notification services for multi-channel messaging with A/B testing.</p>
+      </div>
+      <div class="experience-item">
+        <h3>Data Research Intern</h3>
+        <h4>Agua Wireless, Bengaluru | 2020</h4>
+        <p>Developed automated email marketing dashboards optimizing ROI.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-header">
+      <h2 class="section-title">Contact</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="container contact-info">
+      <p><i class="fas fa-envelope"></i> gouthamchinnaraj@gmail.com</p>
+      <p><i class="fas fa-phone"></i> +1 314-309-9200</p>
+      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/goutham-chinnaraj-50b025191/" style="color:#FFFFFF; text-decoration:none;">linkedin.com/in/goutham-chinnaraj</a></p>
+    </div>
+  </section>
+
+  <script>
+    // Nav toggle
+    const hamb = document.getElementById('hamburger'), menu = document.getElementById('nav-menu');
+    hamb.addEventListener('click', ()=>{ hamb.classList.toggle('active'); menu.classList.toggle('active'); });
+
+    // Active link on scroll
+    const links = document.querySelectorAll('.nav-link'), secs = document.querySelectorAll('section');
+    window.addEventListener('scroll', ()=>{
+      let top = window.scrollY + 100;
+      secs.forEach(sec=>{ if(top>=sec.offsetTop && top<sec.offsetTop+sec.offsetHeight){ links.forEach(l=>l.classList.remove('active')); document.querySelector('.nav-menu a[href="#'+sec.id+'"]').classList.add('active'); }});
+    });
+  </script>
 </body>
 </html>
-
