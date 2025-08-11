@@ -688,6 +688,35 @@
             border-radius: 30px;
             font-size: 0.85rem;
         }
+        
+        /* New Learnings Section */
+        .project-learnings {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--bg-secondary);
+        }
+        
+        .learnings-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-light);
+        }
+        
+        .learnings-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .learnings-link:hover {
+            color: var(--accent-light);
+        }
 
         /* Experience Section */
         .timeline {
@@ -771,6 +800,131 @@
         .experience-description {
             margin-bottom: 10px;
             color: var(--text-secondary);
+        }
+
+        /* New Certifications Section */
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .cert-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-left: 4px solid var(--accent-light);
+        }
+        
+        .cert-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .cert-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .cert-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .cert-issuer {
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .cert-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+        
+        /* New Education Section */
+        .education-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .edu-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .edu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+        }
+        
+        .edu-degree {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .edu-school {
+            font-size: 1.2rem;
+            color: var(--accent-light);
+            margin-bottom: 10px;
+        }
+        
+        .edu-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .edu-gpa {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
         }
 
         /* Contact Section */
@@ -1084,6 +1238,8 @@
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#experience" class="nav-link">Experience</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="theme-toggle" id="themeToggle"></div>
@@ -1099,12 +1255,13 @@
     <section id="home" class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Transforming Data into <span style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Intelligent Solutions</span></h1>
-                <h2 class="hero-subtitle">Software Engineer & AI Specialist</h2>
+                <h1 class="hero-title"> Engineering the data backbone for <span style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"> intelligent applications.</span></h1>
+                <h2 class="hero-subtitle">Software Developer | AI & Data Engineering Enthusiast</h2>
                 <p class="hero-description">
-                    Innovative engineer with 3+ years' expertise in building scalable systems and intelligent data pipelines. 
-                    Certified Salesforce AI Associate with a Master's in Business Analytics, focused on creating AI-driven 
-                    solutions that deliver measurable business impact.
+                    A Software Engineer with 3+ years of experience building scalable e-commerce platforms 
+                    for global brands like Bose and Diageo. My career is now dedicated to the intersection of AI and data. 
+                    Guided by a Master's in Business Analytics and my Salesforce AI certification, I am passionately expanding 
+                    my expertise in Data Engineering to build the next generation of intelligent applications.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">
@@ -1253,7 +1410,7 @@
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
+                <!-- Project 2 (Updated with Learnings) -->
                 <div class="project-card">
                     <div class="project-image">
                         <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1165&q=80" alt="Sentiment Analysis">
@@ -1273,6 +1430,16 @@
                             <span class="tech-tag">NLP</span>
                             <span class="tech-tag">BERT</span>
                             <span class="tech-tag">Linear Regression</span>
+                        </div>
+                        
+                        <!-- New Learnings Section -->
+                        <div class="project-learnings">
+                            <div class="learnings-title">
+                                <i class="fas fa-graduation-cap"></i> Key Learnings
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=u6l1UOFarcc" target="_blank" class="learnings-link">
+                                <i class="fab fa-youtube"></i> Watch the NLP concept explanation
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1397,6 +1564,121 @@
                         Built automated email marketing dashboards using data analytics to optimize 
                         targeting and boost campaign ROI by 25%.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="section-title">Education</h2>
+                <div class="section-subtitle">
+                    My academic journey and qualifications
+                </div>
+            </div>
+            <div class="education-container">
+                <div class="edu-card">
+                    <h3 class="edu-degree">Master of Science in Business Analytics</h3>
+                    <div class="edu-school">Webster University, Saint Louis, MO</div>
+                    <div class="edu-details">
+                        <span class="edu-date">Aug 2023 – May 2025</span>
+                        <span class="edu-gpa">GPA: 3.92</span>
+                    </div>
+                    <p class="project-ai-insight">
+                        <i class="fas fa-lightbulb"></i> AI Insight: Specialized in data-driven decision making and predictive analytics with industry applications.
+                    </p>
+                </div>
+                
+                <div class="edu-card">
+                    <h3 class="edu-degree">Bachelor of Technology in Computer Science</h3>
+                    <div class="edu-school">Jawaharlal Nehru Technological University, Hyderabad, India</div>
+                    <div class="edu-details">
+                        <span class="edu-date">Jun 2017 – July 2021</span>
+                    </div>
+                    <p class="project-ai-insight">
+                        <i class="fas fa-lightbulb"></i> AI Insight: Focused on software engineering fundamentals and emerging technologies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="section-title">Certifications</h2>
+                <div class="section-subtitle">
+                    Professional credentials validating specialized expertise
+                </div>
+            </div>
+            <div class="certifications-container">
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fab fa-salesforce"></i>
+                        </div>
+                        <h3 class="cert-title">Salesforce Certified AI Associate</h3>
+                    </div>
+                    <div class="cert-issuer">Salesforce</div>
+                    <div class="cert-date">2024</div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fab fa-salesforce"></i>
+                        </div>
+                        <h3 class="cert-title">Salesforce Certified Platform Developer I</h3>
+                    </div>
+                    <div class="cert-issuer">Salesforce</div>
+                    <div class="cert-date">2023</div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fab fa-salesforce"></i>
+                        </div>
+                        <h3 class="cert-title">Salesforce Certified Administrator</h3>
+                    </div>
+                    <div class="cert-issuer">Salesforce</div>
+                    <div class="cert-date">2023</div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fab fa-salesforce"></i>
+                        </div>
+                        <h3 class="cert-title">Salesforce Certified Associate</h3>
+                    </div>
+                    <div class="cert-issuer">Salesforce</div>
+                    <div class="cert-date">2023</div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <h3 class="cert-title">AZ-900 Azure Fundamentals</h3>
+                    </div>
+                    <div class="cert-issuer">Microsoft</div>
+                    <div class="cert-date">2023</div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="cert-title">Agile Certified PMI</h3>
+                    </div>
+                    <div class="cert-issuer">Project Management Institute</div>
+                    <div class="cert-date">2022</div>
                 </div>
             </div>
         </div>
@@ -1645,6 +1927,12 @@
                             response = "Goutham has 3+ years of experience as a Software Developer at Tata Consultancy Services, with additional roles as a Data Analyst Intern at Tecaholic and research positions at GradVantage and Aqua Wireless Systems.";
                         } else if(question.toLowerCase().includes('contact')) {
                             response = "You can reach Goutham via email at gouthamchinnaraj@gmail.com or phone at +1 (314) 309-9200. He's based in Chicago, IL.";
+                        } else if(question.toLowerCase().includes('education') || question.toLowerCase().includes('degree')) {
+                            response = "Goutham holds a Master's in Business Analytics from Webster University (GPA 3.92) and a Bachelor's in Computer Science from Jawaharlal Nehru Technological University.";
+                        } else if(question.toLowerCase().includes('certification')) {
+                            response = "Goutham has multiple certifications including Salesforce AI Associate, Salesforce Platform Developer I, Salesforce Administrator, Salesforce Associate, AZ-900 Azure Fundamentals, and Agile Certified PMI.";
+                        } else if(question.toLowerCase().includes('sentiment')) {
+                            response = "You can watch the NLP concept explanation for the Sentiment Analysis project here: https://www.youtube.com/watch?v=u6l1UOFarcc";
                         }
                         
                         aiBody.innerHTML += `
@@ -1658,6 +1946,29 @@
                     }, 1000);
                 }
             }
+        });
+        
+        // Update active section on scroll
+        const sections = document.querySelectorAll('section');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
