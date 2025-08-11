@@ -408,84 +408,140 @@
             position: relative;
         }
 
-        .hero-globe {
+        /* Enhanced Tech Globe */
+        .tech-globe {
             width: 100%;
             max-width: 500px;
             height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, var(--accent), transparent 70%);
-            box-shadow: inset 0 0 50px var(--accent-light),
-                        0 0 80px rgba(99, 102, 241, 0.3);
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            animation: float 6s ease-in-out infinite;
         }
 
-        .hero-globe::before {
-            content: '';
+        .globe-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+
+        .globe-sphere {
             position: absolute;
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: radial-gradient(circle, transparent 65%, var(--bg-card) 90%);
+            background: radial-gradient(circle at 30% 30%, var(--accent), transparent 70%);
+            box-shadow: inset 0 0 50px var(--accent-light),
+                        0 0 80px rgba(99, 102, 241, 0.3);
+            animation: rotate 30s linear infinite;
         }
 
-        .hero-globe::after {
-            content: '';
+        .globe-grid {
             position: absolute;
-            width: 110%;
-            height: 110%;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            background: radial-gradient(circle, transparent 70%, var(--accent-light) 90%);
-            opacity: 0.1;
-            animation: pulse 4s ease-in-out infinite;
+            background: 
+                radial-gradient(circle, transparent 65%, var(--bg-card) 90%),
+                linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,0.1) 49.5%, rgba(255,255,255,0.1) 50.5%, transparent 50.5%),
+                linear-gradient(0deg, transparent 49.5%, rgba(255,255,255,0.1) 49.5%, rgba(255,255,255,0.1) 50.5%, transparent 50.5%),
+                linear-gradient(45deg, transparent 49.5%, rgba(255,255,255,0.1) 49.5%, rgba(255,255,255,0.1) 50.5%, transparent 50.5%),
+                linear-gradient(-45deg, transparent 49.5%, rgba(255,255,255,0.1) 49.5%, rgba(255,255,255,0.1) 50.5%, transparent 50.5%);
+            transform-style: preserve-3d;
+            transform: rotateX(75deg);
+        }
+
+        .globe-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 30px var(--accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            z-index: 2;
+        }
+
+        .data-connection {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .connection-path {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            animation: pulse 3s infinite;
+        }
+
+        .connection-path:nth-child(1) { width: 100%; height: 100%; animation-delay: 0s; }
+        .connection-path:nth-child(2) { width: 130%; height: 130%; animation-delay: 0.5s; }
+        .connection-path:nth-child(3) { width: 160%; height: 160%; animation-delay: 1s; }
+
+        .floating-tech {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--bg-card);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent-light);
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+            z-index: 10;
+            animation: float-tech 15s infinite linear;
+        }
+
+        .floating-tech:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .floating-tech:nth-child(2) { top: 70%; left: 15%; animation-delay: 2s; }
+        .floating-tech:nth-child(3) { top: 40%; left: 80%; animation-delay: 4s; }
+        .floating-tech:nth-child(4) { top: 80%; left: 75%; animation-delay: 6s; }
+        .floating-tech:nth-child(5) { top: 20%; left: 70%; animation-delay: 8s; }
+        .floating-tech:nth-child(6) { top: 60%; left: 10%; animation-delay: 10s; }
+        .floating-tech:nth-child(7) { top: 30%; left: 40%; animation-delay: 12s; }
+        .floating-tech:nth-child(8) { top: 85%; left: 45%; animation-delay: 14s; }
+
+        /* Animations */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes float-tech {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -20px) rotate(5deg); }
+            50% { transform: translate(40px, 10px) rotate(0deg); }
+            75% { transform: translate(20px, 30px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.1; }
-            50% { transform: scale(1.05); opacity: 0.2; }
-        }
-
-        .hero-ai-tag {
-            position: absolute;
-            background: var(--bg-card);
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: var(--shadow);
-            animation: ai-tag-float 8s ease-in-out infinite;
-        }
-
-        .hero-ai-tag:nth-child(1) {
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .hero-ai-tag:nth-child(2) {
-            top: 70%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .hero-ai-tag:nth-child(3) {
-            bottom: 10%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        @keyframes ai-tag-float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-10px) rotate(3deg); }
-            50% { transform: translateY(0) rotate(0deg); }
-            75% { transform: translateY(10px) rotate(-3deg); }
         }
 
         /* Skills Section */
@@ -865,7 +921,7 @@
                 justify-content: center;
             }
             
-            .hero-globe {
+            .tech-globe {
                 margin: 0 auto;
             }
         }
@@ -910,12 +966,39 @@
                 display: flex;
             }
             
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
             .projects-grid {
                 grid-template-columns: 1fr;
             }
             
             .contact-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .ai-chat {
+                width: 90vw;
+                right: 5vw;
+                left: auto;
+            }
+            
+            .tech-globe {
+                height: 400px;
+            }
+            
+            .globe-container {
+                width: 280px;
+                height: 280px;
             }
         }
 
@@ -936,9 +1019,35 @@
                 width: 100%;
             }
             
-            .hero-globe {
-                width: 300px;
-                height: 300px;
+            .section {
+                padding: 70px 0;
+            }
+            
+            .skill-card {
+                padding: 20px;
+            }
+            
+            .project-content {
+                padding: 20px;
+            }
+            
+            .contact-form {
+                padding: 20px;
+            }
+            
+            .tech-globe {
+                height: 350px;
+            }
+            
+            .globe-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .floating-tech {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -1007,10 +1116,46 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="hero-globe">
-                    <div class="hero-ai-tag">AI Integration</div>
-                    <div class="hero-ai-tag">Data Pipelines</div>
-                    <div class="hero-ai-tag">Machine Learning</div>
+                <div class="tech-globe">
+                    <div class="globe-container">
+                        <div class="globe-sphere">
+                            <div class="globe-grid"></div>
+                        </div>
+                        <div class="globe-core">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="data-connection">
+                            <div class="connection-path"></div>
+                            <div class="connection-path"></div>
+                            <div class="connection-path"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating tech icons -->
+                    <div class="floating-tech">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="floating-tech">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="floating-tech">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="floating-tech">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="floating-tech">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="floating-tech">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="floating-tech">
+                        <i class="fab fa-salesforce"></i>
+                    </div>
+                    <div class="floating-tech">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1367,6 +1512,10 @@
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('open');
+                
+                // Update active link
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
             });
         });
 
