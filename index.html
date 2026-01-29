@@ -720,65 +720,60 @@
 
         /* Experience Section */
         .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
+    position: relative;
+    margin: 50px auto;
+    padding: 20px 0;
+}
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: var(--gradient);
-        }
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #6c63ff;
+    transform: translateX(-50%);
+}
 
-        .timeline-item {
-            position: relative;
-            width: 50%;
-            padding: 30px;
-            margin-bottom: 40px;
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
+.timeline-item {
+    width: 45%;
+    padding: 20px;
+    background: #1e293b;
+    border-radius: 12px;
+    position: relative;
+    margin-bottom: 40px;
+}
 
-        .timeline-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
 
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
+.timeline-item:nth-child(even) {
+    left: 55%;
+    text-align: left;
+}
 
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    width: 14px;
+    height: 14px;
+    background: #6c63ff;
+    border-radius: 50%;
+    z-index: 1;
+}
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 32px;
-            width: 20px;
-            height: 20px;
-            background: var(--accent);
-            border-radius: 50%;
-            z-index: 1;
-        }
+.timeline-item:nth-child(odd)::after {
+    right: -7px;
+}
 
-        .timeline-item:nth-child(odd)::before {
-            right: -10px;
-        }
+.timeline-item:nth-child(even)::after {
+    left: -7px;
+}
 
-        .timeline-item:nth-child(even)::before {
-            left: -10px;
-        }
 
         .experience-title {
             font-size: 1.5rem;
